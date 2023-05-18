@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{F836017D-688C-46C3-B904-AFCFC3C8F5F5}|https">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.TestingApp PreferredExecutionTarget="/Applications/Firefox.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestingApp/Program.cs">
+    <Files>
+      <File FileName="TestingApp/Program.cs" Line="19" Column="1" />
+      <File FileName="TestingApp/WeatherForecast.cs" />
+      <File FileName="TestingApp/appsettings.json" />
+      <File FileName="TestingApp/Controllers/WeatherForecastController.cs" />
+      <File FileName="TestingApp/Properties/launchSettings.json" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TestingApp" expanded="True">
+            <Node name="TestingApp" expanded="True" selected="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
