@@ -1,0 +1,13 @@
+.elementsMenu {
+  display: none;
+  opacity: 0;
+  transition: all ease-in-out cubic-bezier(0.075, 0.82, 0.165, 1);
+  position: absolute;
+  z-index: 3550 !important;
+  * {
+    font-size: 14px !important;
+  }
+  svg {
+    font-size: 20px !important;
+  }
+}

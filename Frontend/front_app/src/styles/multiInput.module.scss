@@ -1,0 +1,83 @@
+.tableContainer {
+  table {
+    td:nth-child(n + 3),
+    th:nth-child(n + 3) {
+      max-width: 60px !important;
+      width: 60px !important;
+    }
+
+    td:last-child,
+    th:last-child {
+      max-width: 30px !important;
+      width: 30px !important;
+    }
+
+    td:first-child,
+    th:first-child {
+      max-width: 20px !important;
+      width: 20px !important;
+    }
+
+    td:nth-child(2),
+    th:nth-child(2) {
+      max-width: 90px !important;
+      width: 90px !important;
+    }
+    td:nth-child(3),
+    th:nth-child(3),
+    td:nth-child(4),
+    th:nth-child(4) {
+      max-width: 60px !important;
+      width: 60px !important;
+    }
+
+    input,
+    select {
+      max-width: 90% !important;
+      width: 90px !important;
+    }
+  }
+}
+
+.tableContainer2 {
+  width: 100% !important;
+
+  td {
+    * {
+      font-size: 12px !important;
+    }
+  }
+  svg {
+    font-size: 14px !important;
+    // scale: 1 !important;
+  }
+
+  th:first-child {
+    svg {
+      scale: 1 !important;
+    }
+  }
+  .table_div {
+    width: 100% !important;
+  }
+  table {
+    thead {
+      tr {
+        th {
+          border: none !important;
+          outline: none !important;
+
+          &.strick-table-cell {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+  input,
+  select {
+    max-width: 95% !important;
+    width: 95% !important;
+    background-color: inherit !important;
+  }
+}
