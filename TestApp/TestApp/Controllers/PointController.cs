@@ -17,9 +17,9 @@ namespace TestApp.Controllers
         }
 
         [HttpPost("GetPoint")]
-        public IActionResult GetCateringPoint()
+        public async Task<CateringPoint[]> GetCateringPoint()
         {
-            return Ok();
+            return _manager.DbSet.ToArray();
         }
     }
 }

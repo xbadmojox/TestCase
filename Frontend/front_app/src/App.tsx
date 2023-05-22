@@ -6,6 +6,7 @@ import { Table } from './Helpers';
 import { GetClient } from './API/GetCient'
 import './App.css';
 import {CreateClientPoint} from './Components'
+import Box from '@mui/material/Box';
 
 
 import Button from '@mui/material/Button';
@@ -34,31 +35,39 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-      {isFormVisible
+      {/* <header className="App-header">
+      
+      </header> */}
+      <div>
+      <Box sx={{ minWidth: 120 }}>
+        {isFormVisible
             && <CreateClientPoint
                 onClose={() => setIsFormVisible(false)}
             />
         }
+      </Box>
         <p>
           Тут будет хедер
         </p>
         <Button
+          variant="outlined"
           onClick={() => openTableClientPoint()}
         >
           Таблица Клиент/Поставщики
         </Button>
         <Button
+          variant="outlined"
           onClick={() => openTablePointClient()}
         >
           Таблица Поставщики/Клиент
         </Button>
         <Button
+          variant="outlined"
           onClick={() => openForm()}
         >
           Открыть форму заполнения
         </Button>
-      </header>
+      </div>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { GetListSelectResponse } from './API/GetCient'
 
 
 export function Table({ columns, data } : any) {
@@ -65,10 +66,7 @@ export function NotFoundPage() {
 
 type typeSelect = {
   title: string,
-  data: {
-    value: number,
-    titleRow: string
-  }[]
+  data: Array<GetListSelectResponse>
 }
 
 export function BasicSelect({data, title}: typeSelect) {
@@ -81,7 +79,7 @@ export function BasicSelect({data, title}: typeSelect) {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">{title}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -90,7 +88,7 @@ export function BasicSelect({data, title}: typeSelect) {
           onChange={handleChange}
         >
           {data.map((dataOne) => (
-            <MenuItem value={dataOne.value}>{dataOne.titleRow}</MenuItem>
+            <MenuItem value={dataOne.id}>{dataOne.name}</MenuItem>
           ))}
         </Select>
       </FormControl>

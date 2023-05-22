@@ -1,30 +1,20 @@
 import axios from 'axios';
 
-type GetClientResponse = {
-    date: string;
-    Organizations: string;
-    event: string;
-}[];
+export type GetListSelectResponse = {
+    name: string;
+    id: number;
+};
 
 export async function GetClient() {
-  try {
-    const { data, status } = await axios.post<GetClientResponse>(
-      'https://localhost:7152/NexusClientPoint/GetClient',
+    const { data, status } = await axios.post<GetListSelectResponse[]>(
+      'https://localhost:7152/Client/GetClient',
       {},
       {
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Accept: 'application/json'
+          "Content-type": "application/json"
         },
       },
     );
     return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log('error message: ', error.message);
-    } else {
-      console.log('unexpected error: ', error);
-    }
-  }
 }
 

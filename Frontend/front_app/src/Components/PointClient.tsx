@@ -56,16 +56,16 @@ function PointClient() {
       const dataSelect = React.useMemo(
         () => [
           {
-            value: 1,
-            titleRow: 'firstName'
+            id: 1,
+            name: 'firstName'
           },
           {
-            value: 2,
-            titleRow: 'info'
+            id: 2,
+            name: 'info'
           },
           {
-            value: 3,
-            titleRow: 'event'
+            id: 3,
+            name: 'event'
           },
         ],
         []

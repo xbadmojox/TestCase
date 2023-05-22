@@ -13,8 +13,7 @@ export async function CreateCient({name} : GetClientResponse ) {
       },
       {
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Accept: 'application/json'
+          "Content-type": "application/json"
         },
       },
     );

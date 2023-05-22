@@ -2,6 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using TestApp.Data;
+using TestApp.Extensions;
 
 internal class Program
 {
@@ -13,16 +14,12 @@ internal class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        builder.Services.AddExtensions();
+
         string connectionString = "Host=localhost;Port=5432;Database=TestDataBase;Username=postgres;Password=root;";
 
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy(name: MyAllowSpecificOrigins,
-                              policy =>
-                              {
-                                  policy.WithOrigins("http://localhost:3000");
-                              });
-        });
+        builder.Services.AddCors();
 
         builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString, x => x.UseNetTopologySuite()));
 
@@ -33,7 +30,14 @@ internal class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-        app.UseCors(MyAllowSpecificOrigins);
+
+
+        app.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()
+            //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins seperated with comma
+            .SetIsOriginAllowed(origin => true));// Allow any origin
 
         app.UseHttpsRedirection();
 

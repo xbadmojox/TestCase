@@ -16,9 +16,9 @@ namespace TestApp.Controllers
         }
 
         [HttpPost("GetClient")]
-        public IActionResult GetClient()
+        public async Task<Client[]> GetClient()
         {
-            return Ok();
+            return _manager.DbSet.ToArray();
         }
     }
 }
