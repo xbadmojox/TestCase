@@ -3,28 +3,53 @@ import React, {useEffect, useState} from 'react';
 import {Table, BasicSelect} from '../Helpers'
 import {CreateClientPoint} from '../Components'
 import { GetClient, GetListSelectResponse } from '../API/GetCient'
+import { GetCateringPointResponse, GetClientPoint } from '../API/GetCateringPoint';
 
 export function ClientPoint() {
 
   const [dataValeSelect, setDataValeSelect] = useState<GetListSelectResponse[]>([]);
-  const CheckClient = async () => {
+  const [dataList, setDataList] = useState<GetCateringPointResponse[]>([]);
+  const [selectItem, setSelectItem] = useState(1);
+  const Check = async () => {
     let value = await GetClient();
     if(value){
       setDataValeSelect(value);
     }
-      
-
   };
-  console.log(CheckClient());
+
+  const getList = async () => {
+    let value = await GetClientPoint({idClient: selectItem});
+    if(value){
+      setDataList(value);
+    }
+  };
+
+  
+
+  const setSelect = async (id: number) => {
+    setSelectItem(id);
+  };
+
+  useEffect(() => {
+    getList();
+    Check();
+  }, []);
+
+  useEffect(() => {
+    if(selectItem){
+      getList();
+    }
+  }, [selectItem]);
+  
     const columns = React.useMemo(
         () => [
           {
             Header: 'Дата',
-            accessor: 'firstName'
+            accessor: 'date'
           },
           {
             Header: 'Организация',
-            accessor: 'info'
+            accessor: 'name'
           },
           {
             Header: 'Событие',
@@ -33,58 +58,10 @@ export function ClientPoint() {
         ],
         []
       )
-      
-      const data = React.useMemo(
-        () => [
-          {
-            firstName: 'Name',
-            info: 'Info',
-            event: 'какое то событие'
-          },
-          {
-            firstName: 'Name',
-            info: 'Info',
-            event: 'какое то событие'
-          },
-          {
-            firstName: 'Name',
-            info: 'Info',
-            event: 'какое то событие'
-          },
-          {
-            firstName: 'Name',
-            info: 'Info',
-            event: 'какое то событие'
-          },
-          {
-            firstName: 'Что то',
-            info: 'Отлично',
-            event: 'какое то событие'
-          }
-        ],
-        []
-      )
-      const dataSelect = React.useMemo(
-        () => [
-          {
-            value: 1,
-            titleRow: 'firstName'
-          },
-          {
-            value: 2,
-            titleRow: 'info'
-          },
-          {
-            value: 3,
-            titleRow: 'event'
-          },
-        ],
-        []
-      )
     return (<>
       ClientPoint
-      <BasicSelect title='Клиент' data={dataValeSelect}/>
-      <Table data={data} columns={columns}/>
+      <BasicSelect title='Клиент' data={dataValeSelect} onSetSelect={setSelect}/>
+      <Table data={dataList} columns={columns}/>
     </>
     )
 }

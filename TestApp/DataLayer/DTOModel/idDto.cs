@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.DTOModel
 {
-    public class ResponseListDto
+    public class idDto
     {
-        public DateTime Date { get; set; }
-        public string Name { get; set; }
-        public string Event { get; set; }
+        public int idClient { get; set; }
     }
 }

@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import { Table } from './Helpers';
 import { GetClient } from './API/GetCient'
 import './App.css';
-import {CreateClientPoint} from './Components'
+import {CreateClientPoint, CreatePointForm} from './Components'
 import Box from '@mui/material/Box';
 
 
@@ -20,6 +20,7 @@ function App() {
     console.log(value);
   };
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isFormVisiblePoint, setIsFormVisiblePoint] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,20 +30,26 @@ function App() {
   const openTablePointClient = () => {
     navigate('TablePointClient');
   };
-  const openForm = () => {
+  const openFormClient = () => {
     setIsFormVisible(!isFormVisible);
+  };
+
+  const openFormPoint = () => {
+    setIsFormVisiblePoint(!isFormVisiblePoint);
   };
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-      
-      </header> */}
       <div>
       <Box sx={{ minWidth: 120 }}>
         {isFormVisible
             && <CreateClientPoint
                 onClose={() => setIsFormVisible(false)}
+            />
+        }
+        {isFormVisiblePoint
+            && <CreatePointForm
+                onClose={() => setIsFormVisiblePoint(false)}
             />
         }
       </Box>
@@ -63,9 +70,15 @@ function App() {
         </Button>
         <Button
           variant="outlined"
-          onClick={() => openForm()}
+          onClick={() => openFormClient()}
         >
-          Открыть форму заполнения
+          Открыть форму заполнения клиент
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => openFormPoint()}
+        >
+          Открыть форму заполнения поинт
         </Button>
       </div>
     </div>

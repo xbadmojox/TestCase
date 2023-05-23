@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,5 +89,11 @@ public abstract class BaseRepository<T> : IRepository<T> where T : class
 
     public virtual void Dispose()
     {
+    }
+
+    public IQueryable ExecuteSqlAsync(string query, int parameters = 0)
+    {
+        var fdekoef = _context.Set<T>().FromSqlRaw(query,parameters);
+        return fdekoef;
     }
 }

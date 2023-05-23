@@ -1,4 +1,6 @@
 ﻿using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using TestApp.DataAccess;
 
 namespace TestApp.Data
 {

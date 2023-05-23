@@ -36,12 +36,9 @@ internal class Program
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()
-            //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins seperated with comma
-            .SetIsOriginAllowed(origin => true));// Allow any origin
+            .SetIsOriginAllowed(origin => true));
 
         app.UseHttpsRedirection();
-
-        //app.UseAuthorization();
 
         app.MapControllers();
 

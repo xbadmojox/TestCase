@@ -13,7 +13,7 @@ namespace TestApp.DataAccess
         public Client? Client { get; set; }
         public int CateringPointId { get; set; }
         public CateringPoint? CateringPoint { get; set; }
-        public DayOfWeek DayOfWeek { get; set; }
+        public DateTime Date { get; set; }
         public bool IsDeleted { get; set; }
         public string Event { get; set; }
     }

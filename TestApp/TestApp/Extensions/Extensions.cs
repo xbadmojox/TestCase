@@ -10,6 +10,8 @@ namespace TestApp.Extensions
         public static void AddExtensions(this IServiceCollection services)
         {
             services.AddTransient<IRepository<Client>, ClientRepos>();
+            services.AddTransient<IRepository<CateringPoint>, CateringPointRepos>();
+            services.AddTransient<IRepository<Client_CateringPoint>, CateringPointClientRepos>();
         }
 	}
 }

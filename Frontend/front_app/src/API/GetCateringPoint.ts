@@ -1,30 +1,46 @@
 import axios from 'axios';
 
-type GetCateringPointResponse = {
+export type GetCateringPointResponse = {
     date: string;
-    Client: string;
+    name: string;
     event: string;
-}[];
+};
 
-export async function GetCateringPoint() {
-  try {
-    const { data, status } = await axios.post<GetCateringPointResponse>(
-      'https://localhost:7152/NexusClientPoint/GetPoint',
-      {},
+type inValueClient = {
+  idClient: number;
+};
+
+type inValuePoint = {
+  idPoint: number;
+};
+
+export async function GetClientPoint({idClient} : inValueClient) {
+    const { data, status } = await axios.post<GetCateringPointResponse[]>(
+      'https://localhost:7152/NexusClientPoint/GetClient',
+      {
+        idClient
+      },
       {
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Accept: 'application/json'
+          "Content-type": "application/json"
         },
       },
     );
     return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log('error message: ', error.message);
-    } else {
-      console.log('unexpected error: ', error);
-    }
-  }
+}
+
+export async function GetPointClient({idPoint} : inValuePoint) {
+  const { data, status } = await axios.post<GetCateringPointResponse[]>(
+    'https://localhost:7152/NexusClientPoint/GetPoint',
+    {
+      idPoint
+    },
+    {
+      headers: {
+        "Content-type": "application/json"
+      },
+    },
+  );
+  return data;
 }
 

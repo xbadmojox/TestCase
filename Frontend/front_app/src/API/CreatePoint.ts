@@ -4,12 +4,12 @@ type GetClientResponse = {
     name: string;
 };
 
-export async function CreateCient({name} : GetClientResponse ) {
+export async function CreatePoint({name} : GetClientResponse ) {
   try {
     const { data, status } = await axios.post<GetClientResponse>(
-      'https://localhost:7152/Point/Save',
+      'https://localhost:7152/NexusClientPoint/GetClient',
       {
-        name
+        // name
       },
       {
         headers: {

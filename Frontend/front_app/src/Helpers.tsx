@@ -66,14 +66,16 @@ export function NotFoundPage() {
 
 type typeSelect = {
   title: string,
-  data: Array<GetListSelectResponse>
+  data: Array<GetListSelectResponse>,
+  onSetSelect: (id: any) => void
 }
 
-export function BasicSelect({data, title}: typeSelect) {
+export function BasicSelect({data, title, onSetSelect}: typeSelect) {
   const [value, setValue] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string);
+    onSetSelect(value);
   };
 
   return (

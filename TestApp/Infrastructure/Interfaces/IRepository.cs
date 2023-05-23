@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Interfaces;
+﻿using System.Data;
+
+namespace Infrastructure.Interfaces;
 
 public interface IRepository<T> : IDisposable where T : class
 {
@@ -12,4 +14,5 @@ public interface IRepository<T> : IDisposable where T : class
     Task DeleteAsync(IEnumerable<T> items, bool autoSaveChanges = true);
     Task SaveAsync();
     Task AddAsyncNotSet(T item, bool autoSaveChanges = true);
+    IQueryable ExecuteSqlAsync(string query, int parameters = 0);
 }
